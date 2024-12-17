@@ -18,6 +18,7 @@
 #define DAILY_CALORIE_GOAL 2000  	// Recommended daily calorie intake for adult women
 #define BASAL_METABOLIC_RATE 1300 	// Basal metabolic rate of adult women
 
+int calories_remaining; //[변수 추가] 남은 칼로리 (섭취 칼로리 - 기초 대사량 - 소모 칼로리)
 
 // excercise definition for linked list
 typedef struct {

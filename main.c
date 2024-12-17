@@ -17,8 +17,7 @@
 #define DIETFILEPATH "diets.txt"
 #define HEALTHFILEPATH "health_data.txt"
 
-static int choice;
-extern int calories_remaining; //cal_healthdata.c에서 전역변수 참조 
+static int choice; 
 
 int main() {
 	// To initialize the health data object

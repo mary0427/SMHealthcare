@@ -12,7 +12,6 @@
 #include "cal_exercise.h"
 #include "cal_diets.h"
 #include "cal_healthdata.h"
-int calories_remaining; //남은 칼로리 (섭취 칼로리 - 기초 대사량 - 소모 칼로리)
 
 
 /*
