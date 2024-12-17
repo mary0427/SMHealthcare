@@ -33,7 +33,7 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
     }
 	
 	//운동, 식사 동작마다 HealthData 구조체에 저장된 정보를 'health_data.txt’ 파일로 백업하기위한 코드 
-	//cf. <cal_healthdata.h> - [Exercise구조체의 멤버변수 수정했음!] calories_burned_per_minute -> calories_burned (전체시간 소모칼로리 의미) 
+	//cf. <cal_healthdata.h> - [Exercise구조체의 멤버변수 수정했음!] calories_burned_per_minute -> calories_burned (총 시간 소모칼로리 의미) 
 	 
     // ToCode: to save the chosen exercise and total calories burned 
     fprintf(file, "[Exercises] \n");

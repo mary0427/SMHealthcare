@@ -21,12 +21,11 @@ static int choice;
 
 int main() {
 	// To initialize the health data object
-    HealthData health_data = {0};
-	HealthData* health_data_p = &health_data; //heath_data 구조체 포인터 선언 
+    HealthData health_data = {0}; 
     
     // Tocode: to read the list of the exercises and diets
-    loadExercises(EXERCISEFILEPATH);
-    loadDiets(DIETFILEPATH);
+    //loadExercises(EXERCISEFILEPATH);
+    //loadDiets(DIETFILEPATH);
 
     // ToCode: to run the "Healthcare Management Systems" until all calories are used up or the user wants to exit the system
 		/*시스템 종료 조건 
@@ -54,19 +53,19 @@ int main() {
         switch (choice) {
             case 1:
             	//Exercise
-            
-            	saveData(HEALTHFILEPATH, health_data_p);
+            	inputExercise(&health_data); //사용자의 운동/시간 입력 +  healthdata 구조체에 해당정보 저장
+            	saveData(HEALTHFILEPATH, &health_data); //healthdata 구조체에 저장된 정보를 'health_data' 파일로 백업 
                 break;
                 
             case 2:
             	//Diet
-            	
-            	saveData(HEALTHFILEPATH, health_data_p);
+            	inputDiet(&health_data); //사용자의 음식 입력 +  healthdata 구조체에 해당정보 저장
+            	saveData(HEALTHFILEPATH, &health_data); //healthdata 구조체에 저장된 정보를 'health_data' 파일로 백업 
                 break;
                 
             case 3:
             	//Show logged information
-            	printHealthData(health_data_p); 
+            	printHealthData(&health_data); 
                 break;
                 
             case 4:

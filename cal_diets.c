@@ -36,14 +36,14 @@ void loadDiets(const char* DIETFILEPATH) {
      // ToCode: to read a list of the diets from the given file
     while (1) {
     	//'diets.txt' 파일을 읽고 diet_list[n]에 저장
-    	fscanf(file,"%s", &diet_list[diet_list_size].food_name);
-		fscanf(file,"%d", &diet_list[diet_list_size].calories_intake);
+    	fscanf(file,"%s", &diet_list[diet_list_size].food_name); //음식 이름 읽어옴 
+		fscanf(file,"%d", &diet_list[diet_list_size].calories_intake); //음식 칼로리 읽어옴 
 		
 		diet_list_size++; //운동 하나 저장할 때마다 size 1 증가 
         
         if (diet_list_size >= MAX_DIETS){
         	//종료조건
-			//while(1)로 계속 읽어오고 저장하기를  반복하되, MAX_DIETS까지 동작하고 종료. 
+			//while(1)로 계속 읽어오기를  반복하되, MAX_DIETS개까지 동작하고 종료. 
         	break;
 		}
     }
@@ -64,10 +64,15 @@ void inputDiet(HealthData* health_data) {
     
     // ToCode: to provide the options for the diets to be selected
     printf("The list of diets:\n");
-    
+    	//for문을 활용, diet_list[i]의 멤버를 참조해 print 
+	for (i=0; i<diet_list_size; i++){
+		printf("%d. %s - ", i+1, diet_list[i].food_name);
+		printf("%d kcal\n", diet_list[i].calories_intake);
+	}
     
 	// ToCode: to enter the diet to be chosen with exit option
-    
+    printf("Enter the number of the food : ");
+    scanf("%d", &choice); //choice변수에 사용자가 선택한 식사번호 입력 
 
     // ToCode: to enter the selected diet in the health data
     

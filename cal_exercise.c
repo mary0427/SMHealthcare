@@ -36,14 +36,14 @@ void loadExercises(const char* EXERCISEFILEPATH) {
     // ToCode: to read a list of the exercises from the given file
     while (1) {
     	//'exercises.txt' 파일을 읽고 exercise_list[n]에 저장
-    	fscanf(file,"%s", &exercise_list[exercise_list_size].exercise_name);
-		fscanf(file,"%d", &exercise_list[exercise_list_size].calories_burned);
+    	fscanf(file,"%s", &exercise_list[exercise_list_size].exercise_name); //운동 이름 읽어옴 
+		fscanf(file,"%d", &exercise_list[exercise_list_size].calories_burned); //분 당 소모칼로리 읽어옴  
 		
 		exercise_list_size++; //운동 하나 저장할 때마다 size 1 증가 
     
         if (exercise_list_size >= MAX_EXERCISES){
         	//종료조건
-			//while(1)로 계속 읽어오고 저장하기를  반복하되, MAX_EXERCISES까지동작하고 종료.
+			//while(1)로 계속 읽어오기를  반복하되, MAX_EXERCISES개까지 동작하고 종료.
 		}
     }
 
@@ -67,17 +67,26 @@ void inputExercise(HealthData* health_data) {
     
     // ToCode: to provide the options for the exercises to be selected
     printf("The list of exercises: \n");
-
+    	//for문을 활용, exercise_list[i]의 멤버를 참조해 print 
+	for (i=0; i<exercise_list_size; i++){
+		printf("%d. %s - ", i+1, exercise_list[i].exercise_name);
+		printf("%d kcal\n", exercise_list[i].calories_burned);
+	}
+	
 
     // ToCode: to enter the exercise to be chosen with exit option
-
- 
+	printf("Enter the number of the exercise  : ");
+    scanf("%d", &choice); //choice변수에 사용자가 선택한 운동번호 입력 
+    
     
     // To enter the duration of the exercise
     printf("Enter the duration of the exercise (in min.): ");
     scanf("%d", &duration);
 
     // ToCode: to enter the selected exercise and total calcories burned in the health data
-    
+    health_data->exercises.exercise_name = exercise_list[choice].exercise_name; //운동 이름 저장 
+    health_data->exercises.calories_burned = exercise_list[choice].calories_burned * duration; //총시간 소모칼로리 = 분당 소모칼로리*운동시간  
+    health_data->exercise_count++; //운동 횟수 count 
+    health_data->total_calories_burned += health_data->exercises.calories_burned; //total 소모 칼로리(sum) 계산 
 
 }
