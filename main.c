@@ -52,23 +52,24 @@ int main() {
 		// ToCode: to run the sysmtem based on the user's choice
         switch (choice) {
             case 1:
-            	
+            	//Exercise
             	
             	saveData(HEALTHFILEPATH, health_data_p);
                 break;
                 
             case 2:
-            	
+            	//Diet
             	
             	saveData(HEALTHFILEPATH, health_data_p);
                 break;
                 
             case 3:
+            	//Show logged information
             	printHealthData(health_data_p); 
                 break;
                 
             case 4:
-            	
+            	//Exit
     			printf("Exit the system.\n");
     			printf("=======================================================================\n");
                 break;
