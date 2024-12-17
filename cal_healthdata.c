@@ -12,6 +12,7 @@
 #include "cal_exercise.h"
 #include "cal_diets.h"
 #include "cal_healthdata.h"
+int calories_remaining; //남은 칼로리 (섭취 칼로리 - 기초 대사량 - 소모 칼로리)
 
 
 /*
@@ -23,8 +24,6 @@
     			2. save the chosen diet and total calories intake 
     			3. save the total remaining calrories
 */
-
-int calories_remaining; //calories_remaing 전역변수
 
 void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 	int i;
@@ -119,18 +118,44 @@ void printHealthData(const HealthData* health_data) {
     
 	
 	// ToCode: to print out the recommendtaion depending on the current total calories burned and intake    
-    if  (calories_remaining =0)
-    {
-    	printf("You have consumed all your calories for today!");
-    	
-	}
-	else if  (calories_remaining =0)
+    if  (calories_remaining < 0)
+    	//남은 칼로리 < 0 인 경우
     {
     	printf("[Warning] Too few calories!");
+    	
+    	if (health_data->total_calories_intake == DAILY_CALORIE_GOAL){
+			//섭취 칼로리가 일일 권장 칼로리에 도달한 경우
+	    printf("Your total calorie intake for today has reached your goal!");   
+		}
+		else if (health_data->total_calories_intake < DAILY_CALORIE_GOAL){
+			//섭취 칼로리가 일일 권장 칼로리보다 적은 경우
+	    printf("Your total calorie intake for today has not reached your goal, remember to eat more!!");   
+		}
+		else {
+			//섭취 칼로리가 일일 권장 칼로리보다 많은 경우
+	    printf("You have eaten more calories than planned today, but you have exercised too much!");   
+		}	
 	}
-	else  //calories_remaining >0인 경우 
+	
+	else if  (calories_remaining > 0)
+		//남은 칼로리 > 0 인 경우
     {
     	printf("Please exercise for your health!");
+    	
+    	if (health_data->total_calories_intake == DAILY_CALORIE_GOAL){
+			//섭취 칼로리가 일일 권장 칼로리에 도달한 경우
+	    printf("Your total calorie intake for today has reached your goal!");   
+		}
+		else if (health_data->total_calories_intake < DAILY_CALORIE_GOAL){
+			//섭취 칼로리가 일일 권장 칼로리보다 적은 경우
+			printf("Your total calorie intake for today has not reached your goal, remember to eat more!!");   
+		}
 	}
+	
+	else  
+		//남은 칼로리 =0인 경우(종료조건2)
+	;
+    		// 함수 내에서는 아무 처리안함. main.c에서 do문으로 바로 넘겨질 예정.
+			//do문에서 “You have consumed all your calories for today!”출력 + 시스템 종료 처리될 예정. 
 	 printf("=======================================================================\n");
 }
