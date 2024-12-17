@@ -24,7 +24,7 @@
     			3. save the total remaining calrories
 */
 
-extern int calories_remaining; //main함수의 calories_remaing 전역변수 참조 
+int calories_remaining; //calories_remaing 전역변수
 
 void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 	int i;

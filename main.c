@@ -18,6 +18,7 @@
 #define HEALTHFILEPATH "health_data.txt"
 
 static int choice;
+extern int calories_remaining; //남은 칼로리 (섭취 칼로리 - 기초 대사량 - 소모 칼로리)
 
 int main() {
 	// To initialize the health data object
@@ -27,7 +28,6 @@ int main() {
     
 
     // ToCode: to run the "Healthcare Management Systems" until all calories are used up or the user wants to exit the system
-    int calories_remaining; //남은 칼로리 (섭취 칼로리 - 기초 대사량 - 소모 칼로리)
 	do {
     	if (calories_remaining = 0){
             printf("You have consumed all your calories for today! \n");
