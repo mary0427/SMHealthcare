@@ -32,8 +32,8 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
         return;
     }
 	
-	//healthdata 구조체에 저장된 정보를 'health_data.txt’ 파일로 백업
-	//cf. cal_healthdata.h - [Exercise구조체의 멤버변수 calories_burned_per_minute 수정했음] calories burned "per minute" -> calories burned "over time" 
+	//운동, 식사 동작마다 HealthData 구조체에 저장된 정보를 'health_data.txt’ 파일로 백업하기위한 코드 
+	//cf. <cal_healthdata.h> - [Exercise구조체의 멤버변수 수정했음!] calories_burned_per_minute -> calories_burned (전체시간 소모칼로리 의미) 
 	 
     // ToCode: to save the chosen exercise and total calories burned 
     fprintf(file, "[Exercises] \n");
@@ -42,9 +42,10 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 		strcpy(exercise_name, health_data->exercises[i].exercise_name);  
     	int calories_burned = (health_data->exercises[i].calories_burned); //i번째 운동의 전체시간  소모칼로리  
     	
-		fprintf(file, "%s - %d kcal\n", exercise_name, calories_burned);
+		fprintf(file, "%s - %d kcal\n", exercise_name, calories_burned); //healthdata 구조체 멤버 exercise배열에 저장된 정보를 차례차례 'health_data.txt’ 파일로 백업(fprint) 
 	}
-   	fprintf(file, "Total calories burned: %d kcal\n", health_data->total_calories_burned);
+   	fprintf(file, "Total calories burned: %d kcal\n", health_data->total_calories_burned); //끝으로, total_calories_burned까지 참조 및 파일로 백업(fprint) 
+    
     
     // ToCode: to save the chosen diet and total calories intake 
     fprintf(file, "\n[Diets] \n");
@@ -53,9 +54,9 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
     	strcpy(food_name, health_data->diet[i].food_name);
     	int calories_intake = health_data->diet[i].calories_intake; //i번째 음식의 칼로리
     	
-		fprintf(file, "%s - %d kcal\n", food_name, calories_intake);
+		fprintf(file, "%s - %d kcal\n", food_name, calories_intake); //healthdata 구조체 멤버 diet배열에 저장된 정보를 차례차례 'health_data.txt’파일로 백업(fprint)
 	}
-   	fprintf(file, "Total calories intake: %d kcal\n", health_data->total_calories_intake);
+   	fprintf(file, "Total calories intake: %d kcal\n", health_data->total_calories_intake); //끝으로, total_calories_intake까지 참조 및 파일로 백업(fprint)
 
 
     // ToCode: to save the total remaining calrories
@@ -63,7 +64,7 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
     fprintf(file, "Basal metabolic rate - %d kcal\n",BASAL_METABOLIC_RATE); //기초 대사량 (고정, 1300 kcal)
     
     //남은 칼로리 (섭취 칼로리 - 기초 대사량 - 소모된 칼로리) 
-    int calories_remaining = calories_intake - BASAL_METABOLIC_RATE - calories_burned;
+    int calories_remaining = health_data->total_calories_intake - BASAL_METABOLIC_RATE - health_data->total_calories_burned;
     fprintf(file, "The remaining calories - %d kcal\n",calories_remaining);
     
     fclose(file);
