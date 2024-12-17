@@ -53,7 +53,7 @@ int main() {
         switch (choice) {
             case 1:
             	//Exercise
-            	
+            	loadExercises(EXERCISEFILEPATH);
             	saveData(HEALTHFILEPATH, health_data_p);
                 break;
                 

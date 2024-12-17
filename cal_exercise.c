@@ -34,14 +34,19 @@ void loadExercises(const char* EXERCISEFILEPATH) {
     }
 
     // ToCode: to read a list of the exercises from the given file
-    while ( ) {
-    	
+    while (1) {
+    	//'exercises.txt' 파일을 읽고 exercise_list[n]에 저장
+    	fscanf(file,"%s", &exercise_list[exercise_list_size].exercise_name);
+		fscanf(file,"%d", &exercise_list[exercise_list_size].calories_burned);
+		exercise_list_size++; //운동 하나 저장할 때마다 size 1 증가 
+    
         if (exercise_list_size >= MAX_EXERCISES){
         	break;
 		}
     }
 
     fclose(file);
+    
 }
 
 
