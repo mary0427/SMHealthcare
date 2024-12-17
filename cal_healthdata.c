@@ -24,6 +24,8 @@
     			3. save the total remaining calrories
 */
 
+extern int calories_remaining; //main함수의 calories_remaing 전역변수 참조 
+
 void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 	int i;
     FILE* file = fopen(HEALTHFILEPATH, "w");
@@ -61,7 +63,7 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
     	//'health_data.txt’파일로 백업(fprint)
     fprintf(file, "\n[Total] \n");
     fprintf(file, "Basal metabolic rate - %d kcal\n",BASAL_METABOLIC_RATE); //기초 대사량 (고정, 1300 kcal)
-    int calories_remaining = health_data->total_calories_intake - BASAL_METABOLIC_RATE - health_data->total_calories_burned; //남은 칼로리 (섭취 칼로리 - 기초 대사량 - 소모된 칼로리) 
+    calories_remaining = health_data->total_calories_intake - BASAL_METABOLIC_RATE - health_data->total_calories_burned; //남은 칼로리 (섭취 칼로리 - 기초 대사량 - 소모된 칼로리) 
     fprintf(file, "The remaining calories - %d kcal\n",calories_remaining);
     
     //save 완료. 파일 닫음. 
@@ -111,13 +113,24 @@ void printHealthData(const HealthData* health_data) {
     printf("Basal metabolic rate - %d kcal\n",BASAL_METABOLIC_RATE); //기초 대사량 (고정, 1300 kcal)
  	printf("Total calories burned: %d kcal\n", health_data->total_calories_burned); //total_calories_burned 참조 및 print
  	printf("Total calories intake: %d kcal\n", health_data->total_calories_intake); //total_calories_intake 참조 및 print
-    int calories_remaining = health_data->total_calories_intake - BASAL_METABOLIC_RATE - health_data->total_calories_burned; //남은 칼로리 (섭취 칼로리 - 기초 대사량 - 소모된 칼로리) 
+    calories_remaining = health_data->total_calories_intake - BASAL_METABOLIC_RATE - health_data->total_calories_burned; //남은 칼로리 (섭취 칼로리 - 기초 대사량 - 소모된 칼로리) 
     printf("The remaining calories - %d kcal\n",calories_remaining);
 	printf("=======================================================================\n \n");
     
 	
 	// ToCode: to print out the recommendtaion depending on the current total calories burned and intake    
-     
-    
+    if  (calories_remaining =0)
+    {
+    	printf("You have consumed all your calories for today!");
+    	
+	}
+	else if  (calories_remaining =0)
+    {
+    	printf("[Warning] Too few calories!");
+	}
+	else  //calories_remaining >0인 경우 
+    {
+    	printf("Please exercise for your health!");
+	}
 	 printf("=======================================================================\n");
 }
