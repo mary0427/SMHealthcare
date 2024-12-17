@@ -38,10 +38,12 @@ void loadExercises(const char* EXERCISEFILEPATH) {
     	//'exercises.txt' 파일을 읽고 exercise_list[n]에 저장
     	fscanf(file,"%s", &exercise_list[exercise_list_size].exercise_name);
 		fscanf(file,"%d", &exercise_list[exercise_list_size].calories_burned);
+		
 		exercise_list_size++; //운동 하나 저장할 때마다 size 1 증가 
     
         if (exercise_list_size >= MAX_EXERCISES){
-        	break;
+        	//종료조건
+			//while(1)로 계속 읽어오고 저장하기를  반복하되, MAX_EXERCISES까지동작하고 종료.
 		}
     }
 
