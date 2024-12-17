@@ -1,4 +1,5 @@
 [Exercises] 
+ - 0 kcal
 Total calories burned: 0 kcal
 
 [Diets] 

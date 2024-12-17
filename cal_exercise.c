@@ -84,9 +84,9 @@ void inputExercise(HealthData* health_data) {
     scanf("%d", &duration);
 
     // ToCode: to enter the selected exercise and total calcories burned in the health data
-    health_data->exercises.exercise_name = exercise_list[choice].exercise_name; //운동 이름 저장 
-    health_data->exercises.calories_burned = exercise_list[choice].calories_burned * duration; //총시간 소모칼로리 = 분당 소모칼로리*운동시간  
+	strcpy(health_data->exercises[health_data->exercise_count].exercise_name, exercise_list[choice].exercise_name); //운동 이름 저장 
+    health_data->exercises[health_data->exercise_count].calories_burned = exercise_list[choice].calories_burned * duration; //총시간 소모칼로리 = 분당 소모칼로리*운동시간  
     health_data->exercise_count++; //운동 횟수 count 
-    health_data->total_calories_burned += health_data->exercises.calories_burned; //total 소모 칼로리(sum) 계산 
+    health_data->total_calories_burned += health_data->exercises[health_data->exercise_count].calories_burned; //total 소모 칼로리(sum) 계산 
 
 }
