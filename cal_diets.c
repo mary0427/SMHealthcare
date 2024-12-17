@@ -34,14 +34,20 @@ void loadDiets(const char* DIETFILEPATH) {
     }
 
      // ToCode: to read a list of the diets from the given file
-    while (fscanf(file,"%s", &diet_list[diet_list_size].food_name) != EOF) //파일끝까지 읽음 
+    int check_EOF; 
+	while (1) 
     	{
     	//'diets.txt' 파일을 읽고 diet_list[n]에 저장
-    	fscanf(file,"%s", &diet_list[diet_list_size].food_name); //음식 이름 읽어옴 
-		fscanf(file,"%d", &diet_list[diet_list_size].calories_intake); //음식 칼로리 읽어옴 
+    	check_EOF = fscanf(file,"%s %d", &diet_list[diet_list_size].food_name, &diet_list[diet_list_size].calories_intake); //음식이름, 음식 칼로리 읽어옴 
+			//디버깅: %s %d 사이 반드시 공백을 넣어줘야 %d가 공백을 읽어오지 않는다!!
 		
-		diet_list_size++; //운동 하나 저장할 때마다 size 1 증가 
+		diet_list_size++; //식사 하나 저장할 때마다 size 1 증가 
         
+        if (check_EOF == EOF){
+    		//파일 끝이면 while문 종료. 
+    		break;
+		}
+		
         if (diet_list_size >= MAX_DIETS){
         	//무한루프 방지조건
         	break; 

@@ -34,14 +34,20 @@ void loadExercises(const char* EXERCISEFILEPATH) {
     }
 
     // ToCode: to read a list of the exercises from the given file
-    while (fscanf(file,"%s", &exercise_list[exercise_list_size].exercise_name) != EOF) //파일끝까지 읽음 
+    int check_EOF;
+    while (1)  
     	{
     	//'exercises.txt' 파일을 읽고 exercise_list[n]에 저장
-    	fscanf(file,"%s", &exercise_list[exercise_list_size].exercise_name); //운동 이름 읽어옴 
-		fscanf(file,"%d", &exercise_list[exercise_list_size].calories_burned); //분 당 소모칼로리 읽어옴  
+    	check_EOF = fscanf(file,"%s %d", &exercise_list[exercise_list_size].exercise_name, &exercise_list[exercise_list_size].calories_burned); //운동이름, 분 당 소모칼로리 읽어옴 
+			//디버깅: %s %d 사이 반드시 공백을 넣어줘야 %d가 공백을 읽어오지 않는다!! 
 		
 		exercise_list_size++; //운동 하나 저장할 때마다 size 1 증가 
-    
+    	
+    	if (check_EOF == EOF){
+    		//파일 끝이면 while문 종료. 
+    		break;
+		}
+		
         if (exercise_list_size >= MAX_EXERCISES){
         	//무한루프 방지조건
         	break; 
@@ -87,7 +93,8 @@ void inputExercise(HealthData* health_data) {
     scanf("%d", &duration);
 
     // ToCode: to enter the selected exercise and total calcories burned in the health data
-	strcpy(health_data->exercises[health_data->exercise_count].exercise_name, exercise_list[choice].exercise_name); //운동 이름 exercises[n].exercise_name에 저장 
+	strcpy(health_data->exercises[health_data->exercise_count].exercise_name, exercise_list[choice].exercise_name); //운동 이름 exercises[n].exercise_name에 저장
+		//debug: 문자열은 직접 대입 불가. 반드시 strcpy함수 이용해야함(복사) 
     health_data->exercises[health_data->exercise_count].calories_burned = exercise_list[choice].calories_burned * duration; //총시간 소모칼로리 = 분당 소모칼로리*운동시간을 
     health_data->exercise_count++; //운동 횟수 count																		//exercises[n].calories_burned에 저장
     health_data->total_calories_burned += health_data->exercises[health_data->exercise_count].calories_burned; //total 소모 칼로리(sum) 계산 
