@@ -67,7 +67,8 @@ void inputExercise(HealthData* health_data) {
     
     // ToCode: to provide the options for the exercises to be selected
     printf("The list of exercises: \n");
-    	//for문을 활용, exercise_list[i]의 멤버를 참조해 print 
+    	
+		//for문을 활용, exercise_list[i]의 멤버를 참조해 print 
 	for (i=0; i<exercise_list_size; i++){
 		printf("%d. %s - ", i+1, exercise_list[i].exercise_name);
 		printf("%d kcal\n", exercise_list[i].calories_burned);
@@ -84,9 +85,9 @@ void inputExercise(HealthData* health_data) {
     scanf("%d", &duration);
 
     // ToCode: to enter the selected exercise and total calcories burned in the health data
-	strcpy(health_data->exercises[health_data->exercise_count].exercise_name, exercise_list[choice].exercise_name); //운동 이름 저장 
-    health_data->exercises[health_data->exercise_count].calories_burned = exercise_list[choice].calories_burned * duration; //총시간 소모칼로리 = 분당 소모칼로리*운동시간  
-    health_data->exercise_count++; //운동 횟수 count 
+	strcpy(health_data->exercises[health_data->exercise_count].exercise_name, exercise_list[choice].exercise_name); //운동 이름 exercises[n].exercise_name에 저장 
+    health_data->exercises[health_data->exercise_count].calories_burned = exercise_list[choice].calories_burned * duration; //총시간 소모칼로리 = 분당 소모칼로리*운동시간을 
+    health_data->exercise_count++; //운동 횟수 count																		//exercises[n].calories_burned에 저장
     health_data->total_calories_burned += health_data->exercises[health_data->exercise_count].calories_burned; //total 소모 칼로리(sum) 계산 
 
 }

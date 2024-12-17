@@ -64,7 +64,8 @@ void inputDiet(HealthData* health_data) {
     
     // ToCode: to provide the options for the diets to be selected
     printf("The list of diets:\n");
-    	//for문을 활용, diet_list[i]의 멤버를 참조해 print 
+    	
+		//for문을 활용, diet_list[i]의 멤버를 참조해 print 
 	for (i=0; i<diet_list_size; i++){
 		printf("%d. %s - ", i+1, diet_list[i].food_name);
 		printf("%d kcal\n", diet_list[i].calories_intake);
