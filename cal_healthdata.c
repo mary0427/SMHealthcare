@@ -32,13 +32,15 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
         return;
     }
 	
-	//healthdata 구조체에 저장된 정보를 ‘health_data’ 파일로 백업
+	//healthdata 구조체에 저장된 정보를 'health_data.txt’ 파일로 백업
+	//cf. cal_healthdata.h - [Exercise구조체의 멤버변수 calories_burned_per_minute 수정했음] calories burned "per minute" -> calories burned "over time" 
 	 
     // ToCode: to save the chosen exercise and total calories burned 
     fprintf(file, "[Exercises] \n");
     for (i=0; i<(health_data->exercise_count); i++){
-    	char exercise_name[MAX_EXERCISE_NAME_LEN] = health_data->exercises[i].exercise_name; //i번째 운동의 이름 
-    	int calories_burned = health_data->exercises[i].calories_burned_per_minute * duration; //i번째 운동의 전체 소모칼로리  
+    	char exercise_name[MAX_EXERCISE_NAME_LEN]; //i번째 운동의 이름
+		strcpy(exercise_name, health_data->exercises[i].exercise_name);  
+    	int calories_burned = (health_data->exercises[i].calories_burned); //i번째 운동의 전체시간  소모칼로리  
     	
 		fprintf(file, "%s - %d kcal\n", exercise_name, calories_burned);
 	}
@@ -47,7 +49,8 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
     // ToCode: to save the chosen diet and total calories intake 
     fprintf(file, "\n[Diets] \n");
 	for (i=0; i<(health_data->diet_count); i++){
-    	char food_name[MAX_FOOD_NAME_LEN] = health_data->diet[i].food_name; //i번째 음식의 이름
+    	char food_name[MAX_FOOD_NAME_LEN]; //i번째 음식의 이름
+    	strcpy(food_name, health_data->diet[i].food_name);
     	int calories_intake = health_data->diet[i].calories_intake; //i번째 음식의 칼로리
     	
 		fprintf(file, "%s - %d kcal\n", food_name, calories_intake);
@@ -63,6 +66,7 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
     int calories_remaining = calories_intake - BASAL_METABOLIC_RATE - calories_burned;
     fprintf(file, "The remaining calories - %d kcal\n",calories_remaining);
     
+    fclose(file);
 }
 
 /*
