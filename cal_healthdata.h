@@ -24,7 +24,7 @@ typedef struct {
     char exercise_name[MAX_EXERCISE_NAME_LEN];	// the name of the exercise
     //[Exercise 멤버변수 수정함] calories_burned_per_minute -> calories_burned
     int calories_burned;   			//전체시간 소모칼로리 의미. (calories burned "over time")
-} Exercise;                         //(수정 이유: 코드의 효율성을 위함. logged information과 health data에서는 전체 시간  소모 칼로리를 출력하므로 이를 멤버로 갖도록했음.) 
+} Exercise;                         //(수정 이유: 코드의 효율성을 위함. saveData()와 printHealthData()에서는 전체 시간  소모 칼로리를 출력하므로 이를 멤버로 갖도록했음.) 
 
 // diet definition for linked list
 typedef struct {
