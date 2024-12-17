@@ -31,23 +31,37 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
         printf("There is no file for health data.\n");
         return;
     }
-
+	
+	//healthdata 구조체에 저장된 정보를 ‘health_data’ 파일로 백업
+	 
     // ToCode: to save the chosen exercise and total calories burned 
     fprintf(file, "[Exercises] \n");
     for (i=0; i<(health_data->exercise_count); i++){
-    	 fprintf(file,health_data->exercises[i]);
-    	 printf("\n");
+    	char exercise_name[MAX_EXERCISE_NAME_LEN] = health_data->exercises[i].exercise_name; //i번째 운동의 이름 
+    	int calories_burned = health_data->exercises[i].calories_burned_per_minute * duration; //i번째 운동의 전체 소모칼로리  
+    	
+		fprintf(file, "%s - %d kcal\n", exercise_name, calories_burned);
 	}
-   
+   	fprintf(file, "Total calories burned: %d kcal\n", health_data->total_calories_burned);
     
     // ToCode: to save the chosen diet and total calories intake 
     fprintf(file, "\n[Diets] \n");
-
+	for (i=0; i<(health_data->diet_count); i++){
+    	char food_name[MAX_FOOD_NAME_LEN] = health_data->diet[i].food_name; //i번째 음식의 이름
+    	int calories_intake = health_data->diet[i].calories_intake; //i번째 음식의 칼로리
+    	
+		fprintf(file, "%s - %d kcal\n", food_name, calories_intake);
+	}
+   	fprintf(file, "Total calories intake: %d kcal\n", health_data->total_calories_intake);
 
 
     // ToCode: to save the total remaining calrories
     fprintf(file, "\n[Total] \n");
+    fprintf(file, "Basal metabolic rate - %d kcal\n",BASAL_METABOLIC_RATE); //기초 대사량 (고정, 1300 kcal)
     
+    //남은 칼로리 (섭취 칼로리 - 기초 대사량 - 소모된 칼로리) 
+    int calories_remaining = calories_intake - BASAL_METABOLIC_RATE - calories_burned;
+    fprintf(file, "The remaining calories - %d kcal\n",calories_remaining);
     
 }
 
