@@ -37,7 +37,7 @@ void loadDiets(const char* DIETFILEPATH) {
 	while (fscanf(file,"%s %d", &diet_list[diet_list_size].food_name, &diet_list[diet_list_size].calories_intake) != EOF) 
     	{
     	//'diets.txt' 파일을 읽고 diet_list[n]에 저장
-    		//음식이름, 음식 칼로리 읽어옴. 파일 끝이면 EOF(-1) 반환  
+    		//음식이름, 음식 칼로리 읽어옴. 파일 끝이면 EOF(-1) 반환하고 while문 종료.  
 			//디버깅: %s %d 사이 반드시 공백을 넣어줘야 %d가 공백을 읽어오지 않는다!!
 		
 		diet_list_size++; //식사 하나 저장할 때마다 size 1 증가 

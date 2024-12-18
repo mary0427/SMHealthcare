@@ -38,7 +38,7 @@ void loadExercises(const char* EXERCISEFILEPATH) {
     	{
     	//'exercises.txt' 파일을 읽고 exercise_list[n]에 저장
     	//debug: while 조건문 실행 시 파일 읽어오기가 같이 실행됨 유의 
-    		//운동이름, 분 당 소모칼로리 읽어옴. 파일 끝이면 EOF(-1) 반환 
+    		//운동이름, 분 당 소모칼로리 읽어옴. 파일 끝이면 EOF(-1) 반환하고 while문 종료. 
 			//디버깅: %s %d 사이 반드시 공백을 넣어줘야 %d가 공백을 읽어오지 않는다!! 
 		
 		exercise_list_size++; //운동 하나 저장할 때마다 size 1 증가 
