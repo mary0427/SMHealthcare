@@ -83,10 +83,14 @@ void inputDiet(HealthData* health_data) {
     scanf("%d", &choice); //choice변수에 사용자가 선택한 식사번호 입력 
 
     // ToCode: to enter the selected diet in the health data
-    
+	strcpy(health_data->diet[health_data->diet_count].food_name, diet_list[choice-1].food_name); //음식이름 diet[n].food_name에 저장
+		//debug: 문자열은 직접 대입 불가. 반드시 strcpy함수 이용해야함(복사) 
+    health_data->diet[health_data->diet_count].calories_intake = diet_list[choice-1].calories_intake; //섭취 칼로리 diet[n].calories_intake에 저장 
 
     // ToCode: to enter the total calories intake in the health data
-
+	health_data->total_calories_intake += health_data->diet[health_data->diet_count].calories_intake; //total 섭취칼로리(sum) 계산 
+	
+	health_data->diet_count++; //식사 횟수 count
 
 }
 

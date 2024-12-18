@@ -95,8 +95,8 @@ void inputExercise(HealthData* health_data) {
     // ToCode: to enter the selected exercise and total calcories burned in the health data
 	strcpy(health_data->exercises[health_data->exercise_count].exercise_name, exercise_list[choice-1].exercise_name); //운동 이름 exercises[n].exercise_name에 저장
 		//debug: 문자열은 직접 대입 불가. 반드시 strcpy함수 이용해야함(복사) 
-    health_data->exercises[health_data->exercise_count].calories_burned = exercise_list[choice-1].calories_burned * duration; //총시간 소모칼로리 = 분당 소모칼로리*운동시간을 
-    												     																		//exercises[n].calories_burned에 저장
-    health_data->total_calories_burned += health_data->exercises[health_data->exercise_count].calories_burned; //total 소모 칼로리(sum) 계산 
+    health_data->exercises[health_data->exercise_count].calories_burned = exercise_list[choice-1].calories_burned * duration; //총시간 소모칼로리(= 분당 소모칼로리*운동시간)을 exercises[n].calories_burned에 저장
+   	
+    health_data->total_calories_burned += health_data->exercises[health_data->exercise_count].calories_burned; //total 소모칼로리(sum) 계산 
 	health_data->exercise_count++; //운동 횟수 count
 }
