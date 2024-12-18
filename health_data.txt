@@ -1,10 +1,17 @@
 [Exercises] 
-swimming - 24 kcal
-Total calories burned: 24 kcal
+walking - 4 kcal
+walking - 704 kcal
+yoga - 2 kcal
+Total calories burned: 710 kcal
 
 [Diets] 
-Total calories intake: 0 kcal
+pizza - 900 kcal
+pizza - 900 kcal
+salad - 70 kcal
+salad - 70 kcal
+salad - 70 kcal
+Total calories intake: 2010 kcal
 
 [Total] 
 Basal metabolic rate - 1300 kcal
-The remaining calories - -1324 kcal
+The remaining calories - 0 kcal

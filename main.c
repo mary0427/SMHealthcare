@@ -18,6 +18,7 @@
 #define HEALTHFILEPATH "health_data.txt"
 
 static int choice; 
+calories_remaining = -1; //do문이 시작하자마자 while문이 종료되는 것 방지 위한 0이아닌 임의의 초기값임 
 
 int main() {
 	// To initialize the health data object
@@ -33,10 +34,17 @@ int main() {
 		(2) 남은 칼로리 (섭취 칼로리 - 기초 대사량 - 소모 칼로리) = 0 이 될 시 */
 	
 	do {
-    	if (calories_remaining = 0){
+    	if (calories_remaining == 0) //시스템 종료 조건(2)
+    	{
+			printf("=======================================================================\n \n");
             printf("You have consumed all your calories for today! \n");
-            return 0; //시스템 종료 조건(2) 
+            
+			//exit
+			printf("Exit the system.\n");
+    		printf("=======================================================================\n");
+            break; 
 		} 
+		
 		else{
 			printf("\n=======================================================================\n");
         	printf("[Healthcare Management Systems] \n");

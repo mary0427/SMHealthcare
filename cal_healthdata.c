@@ -160,7 +160,7 @@ void printHealthData(const HealthData* health_data) {
 	else  
 		//남은 칼로리 =0인 경우(시스템 종료조건임)
 	;
-    		// 함수 내에서는 아무 처리안함. main.c에서 do문으로 바로 넘겨질 예정.
-			//do문에서 “You have consumed all your calories for today!”출력 + 시스템 종료 처리될 예정. 
+    		// 해당함수 내에서는 아무 처리안함. main.c에서 시스템 종료를 위해 do문으로 바로 넘겨질 예정.
+			//do문에서 “You have consumed all your calories for today!”print 후  + 시스템 종료 처리될 예정. 
 	 printf("=======================================================================\n");
 }
