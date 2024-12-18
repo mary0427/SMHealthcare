@@ -34,24 +34,17 @@ void loadExercises(const char* EXERCISEFILEPATH) {
     }
 
     // ToCode: to read a list of the exercises from the given file
-    int check_EOF;
-    while (1)  
+    while (fscanf(file,"%s %d", &exercise_list[exercise_list_size].exercise_name, &exercise_list[exercise_list_size].calories_burned) != EOF)  
     	{
     	//'exercises.txt' 파일을 읽고 exercise_list[n]에 저장
-    	check_EOF = fscanf(file,"%s %d", &exercise_list[exercise_list_size].exercise_name, &exercise_list[exercise_list_size].calories_burned); //운동이름, 분 당 소모칼로리 읽어옴 
+    		//운동이름, 분 당 소모칼로리 읽어옴. 파일 끝이면 EOF(-1) 반환 
 			//디버깅: %s %d 사이 반드시 공백을 넣어줘야 %d가 공백을 읽어오지 않는다!! 
 		
 		exercise_list_size++; //운동 하나 저장할 때마다 size 1 증가 
     	
-    	if (check_EOF == EOF){
-    		//파일 끝이면 while문 종료. 
-    		break;
-		}
-		
         if (exercise_list_size >= MAX_EXERCISES){
-        	//무한루프 방지조건
         	break; 
-			//최대 MAX_EXERCISES개까지 동작하고 종료.
+			//최대 MAX_EXERCISES개까지 동작하고 종료. 
 		}
     }
 

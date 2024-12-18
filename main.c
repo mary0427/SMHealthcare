@@ -35,7 +35,7 @@ int main() {
 	
 	do {
     	if (calories_remaining == 0) //시스템 종료 조건(2)
-    	{
+    	{	//debug : 비교연산자는 '='이아니라 '=='이다!! 
 			printf("=======================================================================\n \n");
             printf("You have consumed all your calories for today! \n");
             
