@@ -46,8 +46,7 @@ int main() {
             break; 
 		} 
 		
-		else{
-			
+		else{	
 			printf("\n=======================================================================\n");
         	printf("[Healthcare Management Systems] \n");
         	printf("1. Exercise \n");
